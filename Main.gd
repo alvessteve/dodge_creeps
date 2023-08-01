@@ -3,7 +3,6 @@ extends Node
 @export var mob_scene: PackedScene
 var score
 
-
 func game_over():
 	$ScoreTimer.stop()
 	$MobTimer.stop()
@@ -12,6 +11,7 @@ func game_over():
 func new_game():
 	score = 0
 	$Player.start($StartPosition.position)
+	$ScoreTimer.start()
 	$StartTimer.start()
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
