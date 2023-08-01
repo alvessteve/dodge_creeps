@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdwws5lkd2n1y"]
+[gd_scene load_steps=8 format=3 uid="uid://cdwws5lkd2n1y"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_lwlab"]
 [ext_resource type="PackedScene" uid="uid://bhabk3tg07su0" path="res://enemy.tscn" id="2_h8oem"]
 [ext_resource type="PackedScene" uid="uid://bbivw0wyyxmqc" path="res://player.tscn" id="2_lqjr8"]
 [ext_resource type="PackedScene" uid="uid://b54qgygpa1jjj" path="res://hud.tscn" id="4_pvefp"]
+[ext_resource type="AudioStream" uid="uid://co6hxyxub5ydd" path="res://art/house-in-a-forest-loop.ogg" id="5_fuy1b"]
+[ext_resource type="AudioStream" uid="uid://dxbr2y2tq8dh2" path="res://art/game-over.wav" id="6_ljakx"]
 
 [sub_resource type="Curve2D" id="Curve2D_tpinc"]
 _data = {
@@ -43,6 +45,12 @@ curve = SubResource("Curve2D_tpinc")
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
 
 [node name="HUD" parent="." instance=ExtResource("4_pvefp")]
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_fuy1b")
+
+[node name="DeadSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ljakx")
 
 [connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]
 [connection signal="hit" from="Player" to="." method="game_over"]

@@ -4,6 +4,8 @@ extends Node
 var score
 
 func game_over():
+	$Music.stop()
+	$DeadSound.play()
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
@@ -13,6 +15,7 @@ func new_game():
 	$Player.start($StartPosition.position)
 	$ScoreTimer.start()
 	$StartTimer.start()
+	$Music.play()
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
 	get_tree().call_group("mobs", "queue_free")
